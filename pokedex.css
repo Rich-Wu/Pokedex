@@ -123,6 +123,7 @@ div {
   background-color: #d0d0d0;
   border: 3px solid black;
   border-bottom-left-radius: 90px;
+  border-bottom-right-radius: 15px;
 }
 
 .screen-wrapper-notch {
