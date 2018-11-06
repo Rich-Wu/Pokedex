@@ -2,9 +2,10 @@ console.log('linked');
 
 
 class Pokemon {
-  constructor(number, species, weight, height, type, hp, atk, def, spatk, spdef, speed, abilities) {
+  constructor(number, species, sprites, weight, height, type, hp, atk, def, spatk, spdef, speed, abilities) {
     this.number = number;
     this.species = species;
+    this.sprites = sprites;
     this.weight = weight;
     this.height = height;
     this.type = type;
@@ -15,23 +16,39 @@ class Pokemon {
     this.spdef = spdef;
     this.speed = speed;
     this.abilities = abilities;
-    this.flavorText = '';
+    this.flavorText = undefined;
   }
 }
 
 function addPokemon() {
   var xhttp = new XMLHttpRequest();
+  var userEntry = prompt("Pokemon number").toLowerCase();
+  xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon/" + userEntry + "/", true);
+  xhttp.send();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       // what result you want to achieve
       let data = JSON.parse(this.responseText);
-      console.log(data);
-      let pokemon = new Pokemon(data['id'], data['name'], data['weight'], data['height'], data['types'], data['stats'][5], data['stats'][4], data['stats'][3], data['stats'][2], data['stats'][1], data['stats'][0], data['abilities']);
-      Red.team.push(pokemon);
+      // console.log(data);
+      var pokemon = new Pokemon(data['id'], data['name'], data['sprites'], data['weight'], data['height'], data['types'], data['stats'][5], data['stats'][4], data['stats'][3], data['stats'][2], data['stats'][1], data['stats'][0], data['abilities']);
+      // console.log(pokemon);
+      pokemon['flavorText'] = addFlavor(pokemon);
     }
   };
-  xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon/" + prompt("Pokemon number") + "/", true);
-  xhttp.send();
+}
+
+function addFlavor(pokemon) {
+  var xhttp2 = new XMLHttpRequest();
+  xhttp2.open("GET", "https://pokeapi.co/api/v2/pokemon-species/" + pokemon.number + "/", true);
+  xhttp2.send();
+  xhttp2.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      let data = JSON.parse(this.responseText);
+      // console.log(data['flavor_text_entries'][2]['flavor_text']);
+      pokemon.flavorText = data['flavor_text_entries'][2]['flavor_text'];
+      pokes.push(pokemon);
+    }
+  };
 }
 
 class Trainer {
@@ -55,4 +72,6 @@ class Trainer {
   }
 }
 
+var pokes = [];
 var Red = new Trainer('Red');
+document.getElementById('pokebutton').addEventListener('click', addPokemon);
