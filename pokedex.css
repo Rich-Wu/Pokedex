@@ -1,0 +1,114 @@
+/* body {
+  margin: 0;
+  position: relative;
+}
+
+div {
+  position: relative;
+} */
+.pokedex-container {
+  left: 10px;
+  top: 1vh;
+  height: 95vh;
+  min-width: 500px;
+  width: 500px;
+}
+
+.pokedex-body {
+  background-color: red;
+  height: 100%;
+  width: 100%;
+  border-radius: 55px;
+  border: 6px solid black;
+}
+
+.lights {
+  display: inline-block;
+  width: 51%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-bottom: 5px solid black;
+}
+
+.lights::after {
+  display: inline-block;
+  position: relative;
+  content: "";
+  height: 0px;
+  width: 89px;
+  transform: rotate(-35deg);
+  border-bottom: 5px solid black;
+  left: 6.06em;
+  top: 3.91em;
+}
+
+.notch-right {
+  display: inline-block;
+  position: relative;
+  height: 1em;
+  width: 11em;
+  border-bottom: 5px solid black;
+  left: 4.15em;
+  top: 2.35em;
+}
+
+.pokedex-lens {
+  display: inline-block;
+  position: relative;
+  background-color: black;
+  border-radius: 50%;
+  height: 4.9em;
+  width: 4.9em;
+  background: radial-gradient(circle at 70px 70px, #5cabff, #000);
+  top: 3%;
+  left: 6%;
+  border: 3px solid black;
+  box-shadow: -1px -1px 5px black(.3) inset;
+}
+
+.lens-glare {
+  position: relative;
+  display: inline-block;
+  height: .8em;
+  width: 2.1em;
+  background-color: white;
+  border-radius: 50%;
+  left: 0em;
+  top: 0.9em;
+  box-shadow: 0px 0px 18px white;
+  transform: rotate(-53deg);
+}
+
+.red-light {
+  position: relative;
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  background-color: red;
+  border-radius: 50%;
+  left: 3em;
+  top: .5em;
+  border: 2px solid black;
+}
+.yellow-light {
+  position: relative;
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  background-color: yellow;
+  border-radius: 50%;
+  left: 4.2em;
+  top: .5em;
+  border: 2px solid black;
+}
+.green-light {
+  position: relative;
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  background-color: green;
+  border-radius: 50%;
+  left: 5.5em;
+  top: .5em;
+  border: 2px solid black;
+}
