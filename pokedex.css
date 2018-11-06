@@ -118,8 +118,27 @@ div {
   margin-top: 20px;
   display: inline-block;
   position: relative;
-  width: 90%;
-  height: 75%;
+  width: 450px;
+  height: 465px;
   background-color: #d0d0d0;
   border: 3px solid black;
+  border-bottom-left-radius: 90px;
+}
+
+.screen-wrapper-notch {
+  position: relative;
+  display: inline-block;
+  width: 170px;
+  height: 50px;
+  border-top: 3px solid black;
+  background-color: red;
+  left: -45px;
+  bottom: -398px;
+  transform: rotate(45deg);
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.speaker-grate-1 {
+
 }
