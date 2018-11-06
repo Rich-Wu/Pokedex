@@ -112,3 +112,14 @@ div {
   top: .5em;
   border: 2px solid black;
 }
+
+.screen-wrapper {
+  margin-left: 20px;
+  margin-top: 20px;
+  display: inline-block;
+  position: relative;
+  width: 90%;
+  height: 75%;
+  background-color: #d0d0d0;
+  border: 3px solid black;
+}
