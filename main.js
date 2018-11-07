@@ -54,12 +54,20 @@ function addFlavor(pokemon) {
   xhttp2.send();
   xhttp2.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      let data = JSON.parse(this.responseText);
+      data = JSON.parse(this.responseText);
       // console.log(data['flavor_text_entries'][2]['flavor_text']);
-      console.log(data['flavor_text_entries']);
-      // for (lang in data)
-      pokemon.flavorText = data['flavor_text_entries'][2]['flavor_text'];
-      pokes.push(pokemon);
+      // console.log(data);
+      for (entries in data['flavor_text_entries']) {
+        if (data['flavor_text_entries'][entries]['language']['name'] == 'en'){
+          // console.log(data['flavor_text_entries'][entries]);
+          pokemon.flavorText = data['flavor_text_entries'][entries]['flavor_text'];
+          pokes.push(pokemon);
+          return;
+        } else {
+          console.log('not this one');
+        }
+      }
+      // pokes.push(pokemon);
     }
   };
 }
@@ -71,7 +79,6 @@ class Trainer {
     this.team = [];
   };
 
-
   getTeam() {
     if (this.team.length > 0) {
       let teamOutput = `${this.name}'s team is currently `;
@@ -81,6 +88,12 @@ class Trainer {
       console.log(teamOutput);
     } else {
       console.log("This trainer has no Pokemon and is a scrubnoob.")
+    }
+  }
+
+  makeTeam() {
+    while (pokes.length != 0) {
+      this.team.unshift(pokes.pop());
     }
   }
 }
