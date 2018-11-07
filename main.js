@@ -92,9 +92,9 @@ class Trainer {
   }
 
   makeTeam() {
-    while (pokes.length != 0) {
-      this.team.unshift(pokes.pop());
-    }
+      while (pokes.length != 0) {
+        this.team.unshift(pokes.pop());
+      }
   }
 }
 
