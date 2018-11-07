@@ -1,6 +1,5 @@
 console.log('linked');
 
-
 function threeDigits(num) {
   if (num.toString().length == 3) {
     return num;
@@ -63,8 +62,6 @@ function addFlavor(pokemon) {
           pokemon.flavorText = data['flavor_text_entries'][entries]['flavor_text'];
           pokes.push(pokemon);
           return;
-        } else {
-          console.log('not this one');
         }
       }
       // pokes.push(pokemon);
