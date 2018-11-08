@@ -27,12 +27,13 @@ class Pokemon {
     this.abilities = abilities;
     this.flavorText = undefined;
     this.cry = "cries/" + number + ".ogg";
+    this.caught = false;
   }
 }
 
-function addPokemon() {
+function addPokemon(userEntry) {
   var xhttp = new XMLHttpRequest();
-  var userEntry = prompt("Pokemon number").toLowerCase();
+  // var userEntry = prompt("Pokemon number").toLowerCase();
   xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon/" + userEntry + "/", true);
   xhttp.send();
   xhttp.onreadystatechange = function () {
@@ -102,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.carousel');
     options = {
       'numVisible': 3,
-      'indicators': true,
+      'indicators': false,
       'noWrap': true,
       'shift': 200,
       'dist': -300
@@ -111,7 +112,28 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 function drawPokeballs() {
-  
+  var pokeContainer = document.getElementById("pokeSelector");
+  console.log(pokeContainer);
+  console.log(pokes + ", " + pokes.length);
+  for (let i = 0;i < pokes.length;i++) {
+    // var pokemonData = pokes.pop();
+    if (pokes[i]['caught'] == false) {
+      var newMonster = document.createElement('div');
+      newMonster.className = "carousel-item valign-wrapper"
+      var newPokeball = document.createElement('div');
+      newPokeball.className = "pokeball " + pokes[i]['species'];
+      newMonster.appendChild(newPokeball);
+      pokeContainer.appendChild(newMonster);
+      pokes[i]['caught'] = true;
+      console.log(pokes[i]);
+    }
+  }
+  var elems = document.querySelectorAll('.carousel');
+  var instances = M.Carousel.init(elems, options);
 }
 
 //create eventListener for button to add items to pokes array and refresh carousel
+
+addPokemon(135);
+addPokemon('vulpix');
+addPokemon('smeargle');
