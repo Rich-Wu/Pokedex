@@ -100,7 +100,12 @@ var Red = new Trainer('Red');
 document.getElementById('pokebutton').addEventListener('click', addPokemon);
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.carousel');
-    options = {};
+    options = {
+      'numVisible': 3,
+      'indicators': true,
+      'noWrap': true,
+      'shift': 90
+    };
     var instances = M.Carousel.init(elems, options);
   });
 
