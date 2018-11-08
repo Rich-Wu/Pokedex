@@ -9,6 +9,10 @@ function threeDigits(num) {
   }
 }
 
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 class Pokemon {
   constructor(number, species, sprites, weight, height, type, hp, atk, def, spatk, spdef, speed, abilities) {
     this.number = number;
@@ -139,9 +143,18 @@ function drawPokeballs() {
   var instances = M.Carousel.init(elems, options);
 }
 
+function dexEntry() {
+  //testing with pokes[0]
+  let tester = pokes[2];
+  var entry = `No. ${threeDigits(tester['number'])}<br>${capitalize(tester['species'])}<br>HT: ${tester['height']}<br>WT: ${tester['weight']}<br><br>HP: ${tester['hp']} SPD: ${tester['speed']}<br>ATK: ${tester['atk']} Sp.ATK: ${tester['spatk']}<br>DEF: ${tester['def']} Sp.DEF: ${tester['spdef']}<br><br>Abilities: ${capitalize(tester['abilities'][0]['ability']['name'])}<br><br>${tester['flavorText']}`;
+  console.log(entry);
+  var target = document.getElementById('dexScreen');
+  target.innerHTML = entry;
+}
 //create eventListener for button to add items to pokes array and refresh carousel
 
 addPokemon(135);
 addPokemon('vulpix');
 addPokemon('smeargle');
 setTimeout(drawPokeballs, 500);
+setTimeout(dexEntry, 500);
