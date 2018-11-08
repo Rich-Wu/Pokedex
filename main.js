@@ -104,7 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
       'numVisible': 3,
       'indicators': true,
       'noWrap': true,
-      'shift': 90
+      'shift': 200,
+      'dist': -300
     };
     var instances = M.Carousel.init(elems, options);
   });
