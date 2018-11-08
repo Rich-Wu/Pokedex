@@ -114,8 +114,7 @@ div {
 }
 
 .screen-wrapper {
-  margin-left: 30px;
-  margin-top: 30px;
+  margin: 7%;
   display: inline-block;
   position: relative;
   width: 86%;
@@ -153,4 +152,8 @@ div {
 
 .col {
   overflow: visible;
+}
+
+.carousel {
+  height: 300px;
 }

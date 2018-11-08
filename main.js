@@ -98,3 +98,10 @@ class Trainer {
 var pokes = [];
 var Red = new Trainer('Red');
 document.getElementById('pokebutton').addEventListener('click', addPokemon);
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.carousel');
+    options = {};
+    var instances = M.Carousel.init(elems, options);
+  });
+
+//create eventListener for button to add items to pokes array and refresh carousel
