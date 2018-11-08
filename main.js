@@ -110,4 +110,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.Carousel.init(elems, options);
   });
 
+function drawPokeballs() {
+  
+}
+
 //create eventListener for button to add items to pokes array and refresh carousel
