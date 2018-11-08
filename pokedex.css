@@ -244,6 +244,11 @@ body {
   border-bottom-right-radius: 50%;
 } */
 
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
 .greenscreen {
   display: inline-block;
   position: absolute;
@@ -252,6 +257,7 @@ body {
   width: 94%;
   margin: 3%;
   box-shadow: 0px 0px 10px inset #5b675a;
+  overflow-y: scroll;
 }
 
 .col {
