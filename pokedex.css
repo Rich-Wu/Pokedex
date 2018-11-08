@@ -12,14 +12,19 @@ div {
   height: 95vh;
   min-width: 500px;
   width: 500px;
+  padding: 1em;
+  padding-left: 7em;
+  padding-top: 3em;
 }
 
 .pokedex-body {
   background-color: red;
   height: 100%;
+  min-height: 775px;
   width: 100%;
   border-radius: 55px;
-  border: 6px solid black;
+  /* border: 6px solid #080808; */
+  box-shadow: 10px 15px 36px #638c66, -1px 0px 16px inset black;
 }
 
 .lights {
@@ -114,32 +119,38 @@ div {
 }
 
 .screen-wrapper {
-  margin-left: 20px;
-  margin-top: 20px;
+  margin-left: 30px;
+  margin-top: 30px;
   display: inline-block;
   position: relative;
-  width: 450px;
-  height: 465px;
-  background-color: #d0d0d0;
+  width: 430px;
+  height: 75%;
+  background-color: #828282;
   border: 3px solid black;
   border-bottom-left-radius: 90px;
   border-bottom-right-radius: 15px;
 }
 
 .screen-wrapper-notch {
-  position: relative;
+  position: absolute;
   display: inline-block;
   width: 170px;
   height: 50px;
   border-top: 3px solid black;
   background-color: red;
   left: -45px;
-  bottom: -398px;
+  bottom: 2.3%;
   transform: rotate(45deg);
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
 }
 
-.speaker-grate-1 {
-
+.screen {
+  display: inline-block;
+  position: relative;
+  background-color: #9ab194;
+  height: 79%;
+  width: 94%;
+  margin: 3%;
+  box-shadow: 0px 0px 10px inset #5b675a;
 }
