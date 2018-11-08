@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
       'numVisible': 3,
       'indicators': false,
       'noWrap': true,
-      'shift': 200,
+      'shift': 170,
       'dist': -300
     };
     var instances = M.Carousel.init(elems, options);
@@ -129,6 +129,13 @@ function drawPokeballs() {
     }
   }
   var elems = document.querySelectorAll('.carousel');
+  let options = {
+    'numVisible': 3,
+    'indicators': false,
+    'noWrap': true,
+    'shift': 170,
+    'dist': -300
+  };
   var instances = M.Carousel.init(elems, options);
 }
 
@@ -137,3 +144,4 @@ function drawPokeballs() {
 addPokemon(135);
 addPokemon('vulpix');
 addPokemon('smeargle');
+setTimeout(drawPokeballs, 500);
