@@ -1,5 +1,7 @@
 console.log('linked');
 
+activePokemon = 0;
+
 function threeDigits(num) {
   if (num.toString().length == 3) {
     return num;
@@ -33,6 +35,7 @@ class Pokemon {
     this.cry = "cries/" + number + ".ogg";
     this.caught = false;
   }
+
   dexEntry() {
     //testing with pokes[0]
     var entry = `No. ${this['number']}<br>${this['species']}<br>HT: ${this['height']}<br>WT: ${this['weight']}<br><br>HP: ${this['hp']} SPD: ${this['speed']}<br>ATK: ${this['atk']} Sp.ATK: ${this['spatk']}<br>DEF: ${this['def']} Sp.DEF: ${this['spdef']}<br><br>Abilities: ${capitalize(this['abilities'][0]['ability']['name'])}<br><br>${this['flavorText']}`;
@@ -40,6 +43,8 @@ class Pokemon {
     var target = document.getElementById('dexScreen');
     target.innerHTML = entry;
   }
+
+
 }
 
 function addPokemon() {
@@ -158,7 +163,8 @@ function drawPokeballs() {
       var newMonster = document.createElement('div');
       newMonster.className = "carousel-item valign-wrapper"
       var newPokeball = document.createElement('div');
-      newPokeball.className = "pokeball " + pokes[i]['number'];
+      newPokeball.className = "pokeball";
+      newPokeball.id = pokes[i]['number'];
       newMonster.appendChild(newPokeball);
       pokeContainer.appendChild(newMonster);
       pokes[i]['caught'] = true;
@@ -176,9 +182,24 @@ function drawPokeballs() {
   var instances = M.Carousel.init(elems, options);
 }
 
+function writeDex() {
+  for (pokemon in pokes) {
+    if (pokes[pokemon]['number'] == document.getElementsByClassName('active')[0].children[0].id) {
+      pokes[pokemon].dexEntry();
+    }
+  }
+}
+
 //create eventListener for button to add items to pokes array and refresh carousel
 
+document.getElementsByClassName('scan')[0].addEventListener('click',writeDex);
 fetchPokemon(135);
 fetchPokemon('vulpix');
 fetchPokemon('smeargle');
 setTimeout(drawPokeballs, 1000);
+
+document.addEventListener('click', function() {
+  console.log('clicked');
+})
+
+//pokeballNum is a HTML element property created to reference the pokemon inside's number
