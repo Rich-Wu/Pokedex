@@ -33,6 +33,13 @@ class Pokemon {
     this.cry = "cries/" + number + ".ogg";
     this.caught = false;
   }
+  dexEntry() {
+    //testing with pokes[0]
+    var entry = `No. ${this['number']}<br>${this['species']}<br>HT: ${this['height']}<br>WT: ${this['weight']}<br><br>HP: ${this['hp']} SPD: ${this['speed']}<br>ATK: ${this['atk']} Sp.ATK: ${this['spatk']}<br>DEF: ${this['def']} Sp.DEF: ${this['spdef']}<br><br>Abilities: ${capitalize(this['abilities'][0]['ability']['name'])}<br><br>${this['flavorText']}`;
+    console.log(entry);
+    var target = document.getElementById('dexScreen');
+    target.innerHTML = entry;
+  }
 }
 
 function addPokemon() {
@@ -151,7 +158,7 @@ function drawPokeballs() {
       var newMonster = document.createElement('div');
       newMonster.className = "carousel-item valign-wrapper"
       var newPokeball = document.createElement('div');
-      newPokeball.className = "pokeball " + pokes[i]['species'];
+      newPokeball.className = "pokeball " + pokes[i]['number'];
       newMonster.appendChild(newPokeball);
       pokeContainer.appendChild(newMonster);
       pokes[i]['caught'] = true;
@@ -169,18 +176,9 @@ function drawPokeballs() {
   var instances = M.Carousel.init(elems, options);
 }
 
-function dexEntry() {
-  //testing with pokes[0]
-  let tester = pokes[2];
-  var entry = `No. ${threeDigits(tester['number'])}<br>${capitalize(tester['species'])}<br>HT: ${tester['height']}<br>WT: ${tester['weight']}<br><br>HP: ${tester['hp']} SPD: ${tester['speed']}<br>ATK: ${tester['atk']} Sp.ATK: ${tester['spatk']}<br>DEF: ${tester['def']} Sp.DEF: ${tester['spdef']}<br><br>Abilities: ${capitalize(tester['abilities'][0]['ability']['name'])}<br><br>${tester['flavorText']}`;
-  console.log(entry);
-  var target = document.getElementById('dexScreen');
-  target.innerHTML = entry;
-}
 //create eventListener for button to add items to pokes array and refresh carousel
 
 fetchPokemon(135);
 fetchPokemon('vulpix');
 fetchPokemon('smeargle');
-setTimeout(drawPokeballs, 500);
-setTimeout(dexEntry, 500);
+setTimeout(drawPokeballs, 1000);
