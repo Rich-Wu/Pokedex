@@ -39,7 +39,7 @@ class Pokemon {
   dexEntry() {
     //testing with pokes[0]
     var entry = `No. ${this['number']}<br>${this['species']}<br>HT: ${this['height']}<br>WT: ${this['weight']}<br><br>HP: ${this['hp']} SPD: ${this['speed']}<br>ATK: ${this['atk']} Sp.ATK: ${this['spatk']}<br>DEF: ${this['def']} Sp.DEF: ${this['spdef']}<br><br>Abilities: ${capitalize(this['abilities'][0]['ability']['name'])}<br><br>${this['flavorText']}`;
-    console.log(entry);
+    // console.log(entry);
     var target = document.getElementById('dexScreen');
     target.innerHTML = entry;
   }
@@ -165,10 +165,18 @@ function drawPokeballs() {
       var newPokeball = document.createElement('div');
       newPokeball.className = "pokeball";
       newPokeball.id = pokes[i]['number'];
+      newPokeball.addEventListener('click', function() {
+        console.log('clicked');
+        for (pokemon in pokes) {
+          if (pokes[pokemon]['number'] == document.getElementsByClassName('active')[0].children[0].id) {
+            pokes[pokemon].dexEntry();
+          }
+        }
+      });
       newMonster.appendChild(newPokeball);
       pokeContainer.appendChild(newMonster);
       pokes[i]['caught'] = true;
-      console.log(pokes[i]);
+      // console.log(pokes[i]);
     }
   }
   var elems = document.querySelectorAll('.carousel');
@@ -197,9 +205,5 @@ fetchPokemon(135);
 fetchPokemon('vulpix');
 fetchPokemon('smeargle');
 setTimeout(drawPokeballs, 1000);
-
-document.addEventListener('click', function() {
-  console.log('clicked');
-})
 
 //pokeballNum is a HTML element property created to reference the pokemon inside's number

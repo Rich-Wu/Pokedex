@@ -159,7 +159,7 @@ src: url("fonts/pokemon-font.ttf");
 }
 
 body {
-  font-size: 12px;
+  font-size: 14px;
   font-smooth: never;
   -webkit-font-smoothing: none;
   font-family: 'pokemon-font', monospace;
