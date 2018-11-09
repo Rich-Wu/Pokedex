@@ -107,8 +107,19 @@
 }
 //end of derivative code
 
+@font-face {
+font-family: "pokemon-font";
+src: url("fonts/pokemon-font.ttf");
+}
+
 body {
+  font-size: 12px;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
   font-family: 'pokemon-font', monospace;
+  margin: 0px;
+  background-image: url('img/pokebackground.png');
+  background-size: cover;
 }
 
 .row.pokedex {
