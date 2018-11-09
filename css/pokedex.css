@@ -164,7 +164,7 @@ body {
   -webkit-font-smoothing: none;
   font-family: 'pokemon-font', monospace;
   margin: 0px;
-  background-image: url('img/pokebackground.png');
+  background-image: url('../img/pokebackground.png');
   background-size: cover;
 }
 
