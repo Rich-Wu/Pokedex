@@ -37,7 +37,6 @@ class Pokemon {
   }
 
   dexEntry() {
-    //testing with pokes[0]
     var entry = `No. ${this['number']}<br>${this['species']}<br>HT: ${this['height']}<br>WT: ${this['weight']}<br><br>HP: ${this['hp']} SPD: ${this['speed']}<br>ATK: ${this['atk']} Sp.ATK: ${this['spatk']}<br>DEF: ${this['def']} Sp.DEF: ${this['spdef']}<br><br>Abilities: ${capitalize(this['abilities'][0]['ability']['name'])}<br><br>${this['flavorText']}`;
     // console.log(entry);
     var target = document.getElementById('dexScreen');
