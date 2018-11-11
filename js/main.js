@@ -148,18 +148,19 @@ function drawPokeballs() {
   var pokeContainer = document.getElementById("pokeSelector");
   console.log(pokeContainer);
   console.log(pokes + ", " + pokes.length);
-  for (let i = 0;i <= pokes.length;i++) {
+  for (let i = 0;i < pokes.length;i++) {
     // var pokemonData = pokes.pop();
-    if (i == pokes.length) {
-      var newMonster = document.createElement('div');
-      newMonster.className = "carousel-item valign-wrapper"
-      var newPokeball = document.createElement('div');
-      newPokeball.className = "stillball";
-      newPokeball.id = "addNew";
-      newMonster.appendChild(newPokeball);
-      pokeContainer.appendChild(newMonster);
-
-    } else if (pokes[i]['caught'] == false) {
+    // if (i == pokes.length) {
+    //   var newMonster = document.createElement('div');
+    //   newMonster.className = "carousel-item valign-wrapper"
+    //   var newPokeball = document.createElement('div');
+    //   newPokeball.className = "stillball";
+    //   newPokeball.id = "addNew";
+    //   newMonster.appendChild(newPokeball);
+    //   pokeContainer.appendChild(newMonster);
+    //
+    // } else
+    if (pokes[i]['caught'] == false) {
       var newMonster = document.createElement('div');
       newMonster.className = "carousel-item valign-wrapper"
       var newPokeball = document.createElement('div');
@@ -173,7 +174,14 @@ function drawPokeballs() {
           }
         }
       });
+      var pokemonImg = document.createElement('img');
+      for (pokemon in pokes) {
+        if (pokes[pokemon]['number'] == newPokeball.id) {
+          pokemonImg.src = pokes[pokemon]['picture'];
+        }
+      }
       newMonster.appendChild(newPokeball);
+      newPokeball.appendChild(pokemonImg);
       pokeContainer.appendChild(newMonster);
       pokes[i]['caught'] = true;
       // console.log(pokes[i]);
