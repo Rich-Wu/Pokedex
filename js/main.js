@@ -177,6 +177,9 @@ function drawPokeballs() {
       for (pokemon in pokes) {
         if (pokes[pokemon]['number'] == newPokeball.id) {
           pokemonImg.src = pokes[pokemon]['picture'];
+          pokemonImg.onClick = function() {
+            console.log('clicked');
+          }
         }
       }
       newMonster.appendChild(newPokeball);

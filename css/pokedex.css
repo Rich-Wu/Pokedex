@@ -347,4 +347,9 @@ body {
 .pokeball>img {
   position: absolute;
   width: 100%;
+  z-index: 1;
+}
+
+.pokeball>img:hover {
+  transform: scale(1.5);
 }
