@@ -37,7 +37,7 @@ class Pokemon {
   }
 
   dexEntry() {
-    var entry = `No. ${this['number']}<br>${capitalize(this['species'])}<br>HT: ${Number(.1*this['height']).toFixed(1)}m<br>WT: ${Number(this['weight']*0.1).toFixed(1)}kg<br><br>HP: ${this['hp']} SPD: ${this['speed']}<br>ATK: ${this['atk']} Sp.ATK: ${this['spatk']}<br>DEF: ${this['def']} Sp.DEF: ${this['spdef']}<br><br>Abilities: ${capitalize(this['abilities'][0]['ability']['name'])}<br><br>${this['flavorText']}`;
+    var entry = `No. ${threeDigits(this['number'])}<br>${capitalize(this['species'])}<br>HT: ${Number(.1*this['height']).toFixed(1)}m<br>WT: ${Number(this['weight']*0.1).toFixed(1)}kg<br><br>HP: ${this['hp']} SPD: ${this['speed']}<br>ATK: ${this['atk']} Sp.ATK: ${this['spatk']}<br>DEF: ${this['def']} Sp.DEF: ${this['spdef']}<br><br>Abilities: ${capitalize(this['abilities'][0]['ability']['name'])}<br><br>${this['flavorText']}`;
     // console.log(entry);
     var target = document.getElementById('dexScreen');
     target.innerHTML = entry;
@@ -201,7 +201,7 @@ function drawPokeballs() {
   let options = {
     'numVisible': 3,
     'indicators': false,
-    'noWrap': true,
+    'noWrap': false,
     'shift': 170,
     'dist': -150
   };
