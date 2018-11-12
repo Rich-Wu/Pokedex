@@ -43,7 +43,10 @@ class Pokemon {
     target.innerHTML = entry;
   }
 
-
+  playCry() {
+    document.getElementById(this.number + "cry").play();
+    console.log('played ' + this.number + ", " + this.species);
+  }
 }
 
 function addPokemon() {
@@ -166,10 +169,10 @@ function drawPokeballs() {
       newPokeball.className = "pokeball";
       newPokeball.id = pokes[i]['number'];
       newPokeball.addEventListener('click', function() {
-        console.log('clicked');
         for (pokemon in pokes) {
           if (pokes[pokemon]['number'] == document.getElementsByClassName('active')[0].children[0].id) {
             pokes[pokemon].dexEntry();
+            pokes[pokemon].playCry();
           }
         }
       });
@@ -177,13 +180,18 @@ function drawPokeballs() {
       for (pokemon in pokes) {
         if (pokes[pokemon]['number'] == newPokeball.id) {
           pokemonImg.src = pokes[pokemon]['picture'];
-          pokemonImg.onClick = function() {
-            console.log('clicked');
-          }
+        }
+      }
+      var pokemonCry = document.createElement('audio');
+      for (pokemon in pokes) {
+        if (pokes[pokemon]['number'] == newPokeball.id) {
+          pokemonCry.src = pokes[pokemon]['cry'];
+          pokemonCry.id = newPokeball.id + "cry";
         }
       }
       newMonster.appendChild(newPokeball);
       newPokeball.appendChild(pokemonImg);
+      newPokeball.appendChild(pokemonCry);
       pokeContainer.appendChild(newMonster);
       pokes[i]['caught'] = true;
       // console.log(pokes[i]);
@@ -208,12 +216,16 @@ function writeDex() {
   }
 }
 
-//create eventListener for button to add items to pokes array and refresh carousel
+// function playCry(pokemonNum) {
+//   document.getElementById(pokemonNum + 'cry').play();
+// }
 
-document.getElementsByClassName('scan')[0].addEventListener('click',writeDex);
+
+//create eventListener for button to add items to pokes array and refresh carousel
+document.getElementById('addNew').addEventListener('click',addPokemon);
+document.getElementsByClassName('scan')[0].addEventListener('click',drawPokeballs);
 fetchPokemon(135);
 fetchPokemon('vulpix');
 fetchPokemon('smeargle');
 setTimeout(drawPokeballs, 1000);
-
-//pokeballNum is a HTML element property created to reference the pokemon inside's number
+var instance = M.Carousel.getInstance('.carousel');

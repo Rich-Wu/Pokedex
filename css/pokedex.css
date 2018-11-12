@@ -351,5 +351,27 @@ body {
 }
 
 .pokeball>img:hover {
-  transform: scale(1.5);
+  transform: scale(1.3);
+}
+
+.stillball>i {
+  background-color: #808080db;
+  border-radius: 50%;
+  position: absolute;
+  font-size: 12em;
+  padding: auto;
+  left: 8%;
+  top: 10%;
+  color: #27b127;
+  z-index: 1;
+}
+.stillball>i:hover {
+  visibility: visible;
+  background-color: #8e8e8e6e;
+  border-radius: 50%;
+  position: absolute;
+  padding: auto;
+  left: 8%;
+  top: 10%;
+  color: #27b127;
 }
