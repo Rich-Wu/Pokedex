@@ -201,7 +201,7 @@ function drawPokeballs() {
   let options = {
     'numVisible': 3,
     'indicators': false,
-    'noWrap': true,
+    'noWrap': false,
     'shift': 170,
     'dist': -150
   };
