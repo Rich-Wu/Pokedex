@@ -355,7 +355,8 @@ body {
 }
 
 .stillball>i {
-  background-color: #808080db;
+  opacity: 0;
+  background-color: #808080;
   border-radius: 50%;
   position: absolute;
   font-size: 12em;
@@ -366,8 +367,8 @@ body {
   z-index: 1;
 }
 .stillball>i:hover {
-  visibility: visible;
-  background-color: #8e8e8e6e;
+  opacity: .7;
+  background-color: #8e8e8e;
   border-radius: 50%;
   position: absolute;
   padding: auto;
