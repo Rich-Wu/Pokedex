@@ -189,10 +189,11 @@ function drawPokeballs() {
           pokemonCry.id = newPokeball.id + "cry";
         }
       }
+      document.getElementById('pokeSelector').insertBefore(newMonster, document.getElementsByClassName('carousel-item')[0]);
       newMonster.appendChild(newPokeball);
       newPokeball.appendChild(pokemonImg);
       newPokeball.appendChild(pokemonCry);
-      pokeContainer.appendChild(newMonster);
+      // pokeContainer.appendChild(newMonster);
       pokes[i]['caught'] = true;
       // console.log(pokes[i]);
     }
