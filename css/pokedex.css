@@ -191,7 +191,7 @@ body {
   border-bottom: 5px solid black;
 }
 
-/* .lights::after {
+.lights::after {
   display: inline-block;
   position: relative;
   content: "";
@@ -203,7 +203,7 @@ body {
   top: 50px;
 }
 
-.notch-right {
+/* .notch-right {
   display: inline-block;
   position: relative;
   height: 36px;
