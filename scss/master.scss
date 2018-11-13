@@ -1,16 +1,27 @@
-//Pokeball illustration found on Codepen.io and was written by Håvard Brynjulfsen
-.pokeball, .pokeball:before, .pokeball:after {
-  box-sizing: border-box;
+$pokeball-red: #d21313;
+$pokefont: "pokemon-font", monospace;
+$pokedex-red: #ec1414;
+$draw-border: 4px solid black;
+$light-border: 2px solid black;
+
+%circle {
+  border-radius: 50%;
 }
 
+
+//Pokeball illustration found on Codepen.io and was written by Håvard Brynjulfsen
+// .pokeball, .pokeball:before, .pokeball:after {
+//   box-sizing: border-box;
+// }
+
 .pokeball {
+  @extend %circle;
   display: inline-block;
   margin: auto;
   width: 200px;
   height: 200px;
-  background: #d21313;
-  border-radius:50%;
-  box-shadow:  inset 0 -90px 0 -34px #f7f7f7, inset 0 -97px 0 -34px #000, 5px 5px 13px 0px;
+  background: $pokeball-red;
+  box-shadow:  inset 0 -90px 0 -34px #f7f7f7, inset 0 -97px 0 -34px, 5px 5px 13px 0px;
   position: relative;
   transition: .4s;
   transform-origin: bottom center;
@@ -18,14 +29,14 @@
   -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
 }
 .pokeball:before {
-    display: block;
+  @extend %circle;
+    display: inline-block;
     content: "";
     position: absolute;
     width: 100%;
     height: 40px;
     width: 40px;
-    border-radius: 50%;
-    background: #fff;
+    background: white;
     top: 120px;
     left: 80px;
     border: 1px solid rgba(0,0,0,.4);
@@ -33,26 +44,23 @@
   }
 
   .pokeball:after {
+    @extend %circle;
     display: block;
     content: "";
     position: absolute;
     width: 100%;
     height:100%;
-    border-radius: 50%;
     box-shadow:  inset -5px -3px 5px 0 rgba(0,0,0,.4);
   }
-.stillball, .stillball:before, .stillball:after {
-  box-sizing: border-box;
-}
 
 .stillball {
+  @extend %circle;
   display: inline-block;
   margin: auto;
   width: 200px;
   height: 200px;
-  background: #d21313;
-  border-radius:50%;
-  box-shadow:  inset 0 -90px 0 -34px #f7f7f7, inset 0 -97px 0 -34px #000, 5px 5px 13px 0px;
+  background: $pokeball-red;
+  box-shadow:  inset 0 -90px 0 -34px #f7f7f7, inset 0 -97px 0 -34px black, 5px 5px 13px 0px;
   position: relative;
   transition: .4s;
   transform-origin: bottom center;
@@ -60,14 +68,14 @@
   -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
 }
 .stillball:before {
+  @extend %circle;
     display: block;
     content: "";
     position: absolute;
     width: 100%;
     height: 40px;
     width: 40px;
-    border-radius: 50%;
-    background: #fff;
+    background: white;
     top: 120px;
     left: 80px;
     border: 1px solid rgba(0,0,0,.4);
@@ -75,12 +83,12 @@
   }
 
   .stillball:after {
+    @extend %circle;
     display: block;
     content: "";
     position: absolute;
     width: 100%;
     height:100%;
-    border-radius: 50%;
     box-shadow:  inset -5px -3px 5px 0 rgba(0,0,0,.4);
   }
 
@@ -100,8 +108,6 @@
   .pokeball:focus, .pokeball:active {
     outline: 0;
   }
-
-}
 
 @keyframes wiggle {
   20% {
@@ -160,9 +166,8 @@ src: url("fonts/pokemon-font.ttf");
 
 body {
   font-size: 14px;
-  font-smooth: never;
   -webkit-font-smoothing: none;
-  font-family: 'pokemon-font', monospace;
+  font-family: $pokefont;
   margin: 0px;
   background-image: url('../img/pokebackground.png');
   background-size: cover;
@@ -175,49 +180,31 @@ body {
 }
 
 .pokedex-body {
-  background-color: #ec1414;
+  position: relative;
+  background-color: $pokedex-red;
   min-height: 550px;
   width: 100%;
   border-radius: 55px;
-  border: 4px solid #080808;
+  border: $draw-border;
   box-shadow: 10px 15px 36px #0000004a, -1px 0px 16px inset black;
 }
 
 .lights {
   display: inline-block;
-  width: 51%;
+  width: 61%;
   padding-top: 1em;
-  padding-bottom: 1em;
-  border-bottom: 5px solid black;
+  /* padding-bottom: 1em; */
+  border-bottom: $draw-border;
+  border-right: $draw-border;
+  overflow: hidden;
 }
-
-/* .lights::after {
-  display: inline-block;
-  position: relative;
-  content: "";
-  height: 0px;
-  width: 80px;
-  transform: rotate(-30deg);
-  border-bottom: 5px solid black;
-  left: 96px;
-  top: 50px;
-}
-
-.notch-right {
-  display: inline-block;
-  position: relative;
-  height: 36px;
-  width: 143px;
-  border-bottom: 5px solid black;
-  left: 64px;
-  top: 30px;
-} */
 
 .pokedex-lens {
+  @extend %circle;
   display: inline-block;
   position: relative;
   background-color: black;
-  border-radius: 50%;
+  box-sizing: border-box;
   height: 4.9em;
   width: 4.9em;
   background: radial-gradient(circle at 70px 70px, #5cabff, #000);
@@ -225,53 +212,59 @@ body {
   left: 6%;
   border: 3px solid black;
   box-shadow: -1px -1px 5px black(.3) inset;
+  margin-bottom: 4%;
 }
 
 .lens-glare {
+  @extend %circle;
   position: relative;
   display: inline-block;
   height: .8em;
   width: 2.1em;
   background-color: white;
-  border-radius: 50%;
   left: 0em;
   top: 0.9em;
   box-shadow: 0px 0px 18px white;
   transform: rotate(-53deg);
 }
 
+.lights-flex {
+  display: inline-flex;
+  align-content: space-between;
+}
+
 .red-light {
+  @extend %circle;
   position: relative;
   display: inline-block;
   height: 12px;
   width: 12px;
   background-color: red;
-  border-radius: 50%;
   left: 3em;
   top: .5em;
-  border: 2px solid black;
+  border: $light-border;
 }
 .yellow-light {
+  @extend %circle;
   position: relative;
   display: inline-block;
   height: 12px;
   width: 12px;
   background-color: yellow;
-  border-radius: 50%;
   left: 4.2em;
   top: .5em;
-  border: 2px solid black;
+  border: $light-border;
 }
 .green-light {
+  @extend %circle;
   position: relative;
   display: inline-block;
   height: 12px;
   width: 12px;
   background-color: green;
-  border-radius: 50%;
   left: 5.5em;
   top: .5em;
-  border: 2px solid black;
+  border: $light-border;
 }
 
 .screen-wrapper {
@@ -282,7 +275,7 @@ body {
   min-height: 360px;
   height: 60vh;
   background-color: #828282;
-  border: 3px solid black;
+  border: $light-border;
   border-bottom-left-radius: 90px;
   border-bottom-right-radius: 15px;
 }
@@ -355,8 +348,9 @@ body {
 }
 
 .stillball>i {
-  background-color: #808080db;
-  border-radius: 50%;
+  @extend %circle;
+  opacity: 0;
+  background-color: #808080;
   position: absolute;
   font-size: 12em;
   padding: auto;
@@ -365,11 +359,9 @@ body {
   color: #27b127;
   z-index: 1;
 }
-
 .stillball>i:hover {
-  visibility: visible;
-  background-color: #8e8e8e6e;
-  border-radius: 50%;
+  opacity: .7;
+  background-color: #8e8e8e;
   position: absolute;
   padding: auto;
   left: 8%;

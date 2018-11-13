@@ -1,6 +1,6 @@
 //Pokeball illustration found on Codepen.io and was written by Håvard Brynjulfsen
 .pokeball, .pokeball:before, .pokeball:after {
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
 
 .pokeball {
@@ -14,8 +14,6 @@
   position: relative;
   transition: .4s;
   transform-origin: bottom center;
-  // Remove mobile tab color
-  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
 }
 .pokeball:before {
     display: block;
