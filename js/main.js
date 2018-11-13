@@ -103,6 +103,7 @@ function addFlavor(pokemon) {
           // console.log(data['flavor_text_entries'][entries]);
           pokemon.flavorText = data['flavor_text_entries'][entries]['flavor_text'];
           pokes[pokemon['number']] = pokemon;
+          setTimeout(drawPokeballs, 500);
           return;
         }
       }
@@ -219,7 +220,12 @@ function writeDex() {
 
 
 //create eventListener for button to add items to pokes array and refresh carousel
-document.getElementById('addNew').addEventListener('click',addPokemon);
+document.getElementById('addNew').addEventListener('click',function(e) {
+  if (e.target.parentElement.parentElement.classList.contains('active')) {
+    addPokemon();
+  }
+});
+
 document.getElementsByClassName('scan')[0].addEventListener('click',drawPokeballs);
 fetchPokemon(135);
 fetchPokemon('vulpix');
