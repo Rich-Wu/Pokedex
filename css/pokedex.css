@@ -187,20 +187,19 @@ body {
   display: inline-block;
   width: 51%;
   padding-top: 1em;
-  padding-bottom: 1em;
+  /* padding-bottom: 1em; */
   border-bottom: 5px solid black;
 }
 
 .lights::after {
-  display: inline-block;
+  display: block;
   position: relative;
   content: "";
-  height: 0px;
-  width: 80px;
-  transform: rotate(-30deg);
+  transform: rotate(150deg);
   border-bottom: 5px solid black;
-  left: 96px;
-  top: 50px;
+  transform-origin: bottom right;
+  left: 69%;
+  width: 30%;
 }
 
 /* .notch-right {
@@ -225,6 +224,7 @@ body {
   left: 6%;
   border: 3px solid black;
   box-shadow: -1px -1px 5px black(.3) inset;
+  padding-bottom: 1em;
 }
 
 .lens-glare {
