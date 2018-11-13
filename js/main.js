@@ -96,7 +96,7 @@ function addFlavor(pokemon) {
         if (data['flavor_text_entries'][entries]['language']['name'] == 'en'){
           // console.log(data['flavor_text_entries'][entries]);
           pokemon.flavorText = data['flavor_text_entries'][entries]['flavor_text'];
-          pokes.push(pokemon);
+          pokes[pokemon['number']] = pokemon;
           return;
         }
       }
@@ -104,35 +104,35 @@ function addFlavor(pokemon) {
     }
   };
 }
+var pokes = {};
 
-class Trainer {
-  constructor(name) {
-    this.name = name;
-    // this.gender = gender;
-    this.team = [];
-  };
+// class Trainer {
+//   constructor(name) {
+//     this.name = name;
+//     // this.gender = gender;
+//     this.team = [];
+//   };
+//
+//   getTeam() {
+//     if (this.team.length > 0) {
+//       let teamOutput = `${this.name}'s team is currently `;
+//       for (let member = 0; member < this.team.length; member++) {
+//         teamOutput = teamOutput + this.team[member] + " ";
+//       }
+//       console.log(teamOutput);
+//     } else {
+//       console.log("This trainer has no Pokemon and is a scrubnoob.")
+//     }
+//   }
+//
+//   makeTeam() {
+//       while (pokes.length != 0) {
+//         this.team.unshift(pokes.pop());
+//       }
+//   }
+// }
 
-  getTeam() {
-    if (this.team.length > 0) {
-      let teamOutput = `${this.name}'s team is currently `;
-      for (let member = 0; member < this.team.length; member++) {
-        teamOutput = teamOutput + this.team[member] + " ";
-      }
-      console.log(teamOutput);
-    } else {
-      console.log("This trainer has no Pokemon and is a scrubnoob.")
-    }
-  }
-
-  makeTeam() {
-      while (pokes.length != 0) {
-        this.team.unshift(pokes.pop());
-      }
-  }
-}
-
-var pokes = [];
-var Red = new Trainer('Red');
+// var Red = new Trainer('Red');
 // document.getElementById('pokebutton').addEventListener('click', addPokemon);
 // document.addEventListener('DOMContentLoaded', function() {
 //     var elems = document.querySelectorAll('.carousel');
@@ -148,34 +148,14 @@ var Red = new Trainer('Red');
 
 function drawPokeballs() {
   var pokeContainer = document.getElementById("pokeSelector");
-  console.log(pokeContainer);
-  console.log(pokes + ", " + pokes.length);
-  for (let i = 0;i < pokes.length;i++) {
-    // var pokemonData = pokes.pop();
-    // if (i == pokes.length) {
-    //   var newMonster = document.createElement('div');
-    //   newMonster.className = "carousel-item valign-wrapper"
-    //   var newPokeball = document.createElement('div');
-    //   newPokeball.className = "stillball";
-    //   newPokeball.id = "addNew";
-    //   newMonster.appendChild(newPokeball);
-    //   pokeContainer.appendChild(newMonster);
-    //
-    // } else
-    if (pokes[i]['caught'] == false) {
+  for (pokemon in pokes) {
+    if (pokes[pokemon]['caught'] == false) {
+      pokes[pokemon]['caught'] = true;
       var newMonster = document.createElement('div');
       newMonster.className = "carousel-item valign-wrapper"
       var newPokeball = document.createElement('div');
       newPokeball.className = "pokeball";
-      newPokeball.id = pokes[i]['number'];
-      newPokeball.addEventListener('click', function() {
-        for (pokemon in pokes) {
-          if (pokes[pokemon]['number'] == document.getElementsByClassName('active')[0].children[0].id) {
-            pokes[pokemon].dexEntry();
-            pokes[pokemon].playCry();
-          }
-        }
-      });
+      newPokeball.id = pokes[pokemon]['number'];
       var pokemonImg = document.createElement('img');
       for (pokemon in pokes) {
         if (pokes[pokemon]['number'] == newPokeball.id) {
@@ -193,9 +173,12 @@ function drawPokeballs() {
       newMonster.appendChild(newPokeball);
       newPokeball.appendChild(pokemonImg);
       newPokeball.appendChild(pokemonCry);
-      // pokeContainer.appendChild(newMonster);
-      pokes[i]['caught'] = true;
-      // console.log(pokes[i]);
+      newPokeball.addEventListener('click', function(e) {
+        if (e.target.parentElement.parentElement.classList.contains('active')) {
+          pokes[e.target.parentElement.id].dexEntry();
+          pokes[e.target.parentElement.id].playCry();
+        }
+      });
     }
   }
   var elems = document.querySelectorAll('.carousel');
@@ -207,14 +190,21 @@ function drawPokeballs() {
     'dist': -150
   };
   var instances = M.Carousel.init(elems, options);
+  // for (ball in document.getElementsByClassName('pokeball')) {
+  //   document.getElementsByClassName('pokeball')[ball].addEventListener('click', function() {
+  //     console.log(this.currentTarget);
+  //     pokes[this.currentTarget.id].dexEntry();
+  //     pokes[this.currentTarget.id].playCry();
+  //   });
+  // }
 }
 
 function writeDex() {
-  for (pokemon in pokes) {
-    if (pokes[pokemon]['number'] == document.getElementsByClassName('active')[0].children[0].id) {
-      pokes[pokemon].dexEntry();
-    }
-  }
+  // for (pokemon in pokes) {
+    // if (pokes[pokemon]['number'] == document.getElementsByClassName('active')[0].children[0].id) {
+      pokes[this.currentTarget.id].dexEntry();
+    // }
+  // }
 }
 
 // function playCry(pokemonNum) {
@@ -229,4 +219,3 @@ fetchPokemon(135);
 fetchPokemon('vulpix');
 fetchPokemon('smeargle');
 setTimeout(drawPokeballs, 1000);
-var instance = M.Carousel.getInstance('.carousel');
