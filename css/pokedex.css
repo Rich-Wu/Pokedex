@@ -175,6 +175,7 @@ body {
 }
 
 .pokedex-body {
+  position: relative;
   background-color: #ec1414;
   min-height: 550px;
   width: 100%;
@@ -185,31 +186,38 @@ body {
 
 .lights {
   display: inline-block;
-  width: 51%;
+  width: 61%;
   padding-top: 1em;
   /* padding-bottom: 1em; */
   border-bottom: 5px solid black;
+  border-right: 5px solid black;
+  overflow: hidden;
 }
 
-.lights::after {
+/* .lights::after {
   display: block;
   position: relative;
   content: "";
   transform: rotate(150deg);
   border-bottom: 5px solid black;
   transform-origin: bottom right;
-  left: 69%;
+  left: 68.9%;
   width: 30%;
-}
+} */
 
 /* .notch-right {
+  position: absolute;
+  width: 36%;
+  right: 0;
+  padding-top: 1em;
+  border-bottom: 5px solid black;
+}
+.sizing {
   display: inline-block;
   position: relative;
-  height: 36px;
-  width: 143px;
-  border-bottom: 5px solid black;
-  left: 64px;
-  top: 30px;
+  height: 3.2em;
+  top: 3%;
+  right: 6%;
 } */
 
 .pokedex-lens {
@@ -217,6 +225,7 @@ body {
   position: relative;
   background-color: black;
   border-radius: 50%;
+  box-sizing: border-box;
   height: 4.9em;
   width: 4.9em;
   background: radial-gradient(circle at 70px 70px, #5cabff, #000);
@@ -224,7 +233,7 @@ body {
   left: 6%;
   border: 3px solid black;
   box-shadow: -1px -1px 5px black(.3) inset;
-  padding-bottom: 1em;
+  margin-bottom: 4%;
 }
 
 .lens-glare {
@@ -238,6 +247,11 @@ body {
   top: 0.9em;
   box-shadow: 0px 0px 18px white;
   transform: rotate(-53deg);
+}
+
+.lights-flex {
+  display: inline-flex;
+  align-content: space-between;
 }
 
 .red-light {
