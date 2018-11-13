@@ -360,7 +360,8 @@ body {
   color: #27b127;
   z-index: 1;
 }
-.stillball>i:hover {
+
+.stillball > i:hover {
   opacity: .7;
   background-color: #8e8e8e;
   position: absolute;
@@ -368,4 +369,36 @@ body {
   left: 8%;
   top: 10%;
   color: #27b127;
+}
+
+.splash {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.splash p {
+  text-align: center;
+  font-size: 0.6em;
+  position: absolute;
+}
+
+#author {
+  position: relative;
+  top: 5%;
+}
+
+#credits {
+  bottom: 8%;
+}
+
+.greenscreen img {
+  object-fit: cover;
+  position: relative;
+  display: block;
+  width: 70%;
+  max-height: 180px;
+  height: auto;
+  margin: auto;
+  top: 5%;
 }

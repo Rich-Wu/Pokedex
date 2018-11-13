@@ -59,6 +59,7 @@ class Pokemon {
   dexEntry() {
     var entry = `No. ${this['number']}<br>${capitalize(this['species'])}<br>HT: ${Number(.1*this['height']).toFixed(1)}m<br>WT: ${Number(this['weight']*0.1).toFixed(1)}kg<br><br>HP: ${this['hp']} SPD: ${this['speed']}<br>ATK: ${this['atk']} Sp.ATK: ${this['spatk']}<br>DEF: ${this['def']} Sp.DEF: ${this['spdef']}<br><br>Abilities: ${this.getAbilities()}<br><br>${this['flavorText']}`;
     // console.log(entry);
+    document.getElementsByClassName('splash')[0].style.display = 'none';
     var target = document.getElementById('dexScreen');
     target.innerHTML = entry;
   }
@@ -96,12 +97,10 @@ function addPokemon() {
 
 function fetchPokemon(userEntry) {
   var xhttp = new XMLHttpRequest();
-  // var userEntry = prompt("Pokemon number").toLowerCase();
   xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon/" + userEntry + "/", true);
   xhttp.send();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      // what result you want to achieve
       let data = JSON.parse(this.responseText);
       // console.log(data);
       var pokemon = new Pokemon(data['id'], data['name'], data['sprites'], data['weight'], data['height'], data['types'], data['stats'][5]['base_stat'], data['stats'][4]['base_stat'], data['stats'][3]['base_stat'], data['stats'][2]['base_stat'], data['stats'][1]['base_stat'], data['stats'][0]['base_stat'], data['abilities']);
@@ -129,50 +128,9 @@ function addFlavor(pokemon) {
           return;
         }
       }
-      // pokes.push(pokemon);
     }
   };
 }
-
-// class Trainer {
-//   constructor(name) {
-//     this.name = name;
-//     // this.gender = gender;
-//     this.team = [];
-//   };
-//
-//   getTeam() {
-//     if (this.team.length > 0) {
-//       let teamOutput = `${this.name}'s team is currently `;
-//       for (let member = 0; member < this.team.length; member++) {
-//         teamOutput = teamOutput + this.team[member] + " ";
-//       }
-//       console.log(teamOutput);
-//     } else {
-//       console.log("This trainer has no Pokemon and is a scrubnoob.")
-//     }
-//   }
-//
-//   makeTeam() {
-//       while (pokes.length != 0) {
-//         this.team.unshift(pokes.pop());
-//       }
-//   }
-// }
-
-// var Red = new Trainer('Red');
-// document.getElementById('pokebutton').addEventListener('click', addPokemon);
-// document.addEventListener('DOMContentLoaded', function() {
-//     var elems = document.querySelectorAll('.carousel');
-//     options = {
-//       'numVisible': 3,
-//       'indicators': false,
-//       'noWrap': true,
-//       'shift': 170,
-//       'dist': -300
-//     };
-//     var instances = M.Carousel.init(elems, options);
-//   });
 
 function drawPokeballs() {
   var pokeContainer = document.getElementById("pokeSelector");
@@ -218,29 +176,8 @@ function drawPokeballs() {
     'dist': -150
   };
   var instances = M.Carousel.init(elems, options);
-  // for (ball in document.getElementsByClassName('pokeball')) {
-  //   document.getElementsByClassName('pokeball')[ball].addEventListener('click', function() {
-  //     console.log(this.currentTarget);
-  //     pokes[this.currentTarget.id].dexEntry();
-  //     pokes[this.currentTarget.id].playCry();
-  //   });
-  // }
 }
 
-function writeDex() {
-  // for (pokemon in pokes) {
-    // if (pokes[pokemon]['number'] == document.getElementsByClassName('active')[0].children[0].id) {
-      Red.pokes[this.currentTarget.id].dexEntry();
-    // }
-  // }
-}
-
-// function playCry(pokemonNum) {
-//   document.getElementById(pokemonNum + 'cry').play();
-// }
-
-
-//create eventListener for button to add items to pokes array and refresh carousel
 document.getElementById('addNew').addEventListener('click',function(e) {
   if (e.target.parentElement.parentElement.classList.contains('active')) {
     addPokemon();
