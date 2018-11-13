@@ -1,7 +1,5 @@
 console.log('linked');
 
-activePokemon = 0;
-
 function threeDigits(num) {
   if (num.toString().length == 3) {
     return num;
