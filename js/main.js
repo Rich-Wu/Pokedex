@@ -189,7 +189,7 @@ function drawPokeballs() {
         if (Red.pokes[pokemon]['number'] == newPokeball.id) {
           pokemonImg.src = Red.pokes[pokemon]['picture'];
         }
-      }
+      };
       var pokemonCry = document.createElement('audio');
       for (pokemon in Red.pokes) {
         if (Red.pokes[pokemon]['number'] == newPokeball.id) {

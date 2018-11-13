@@ -231,7 +231,8 @@ body {
   width: 100%;
   z-index: 1; }
 
-.pokeball > img:hover {
+.active img {
+  transition: transform .1s ease-in;
   transform: scale(1.8); }
 
 .stillball > i {
