@@ -70,7 +70,7 @@ class Pokemon {
     document.getElementsByClassName('splash')[0].style.display = 'none';
     var target = document.getElementById('dexScreen');
     document.getElementById('sprite').src = this.sprites['front_default'];
-    console.log(this.sprites['front_default']);
+    // console.log(this.sprites['front_default']);
     target.innerHTML = entry;
   }
 
@@ -84,7 +84,7 @@ class Pokemon {
 
   playCry() {
     document.getElementById(this.number + "cry").play();
-    console.log('played ' + this.number + ", " + this.species);
+    // console.log('played ' + this.number + ", " + this.species);
   }
 }
 
@@ -136,15 +136,15 @@ function addFlavor(pokemon) {
         if (data['flavor_text_entries'][entries]['language']['name'] == 'en'){
           // console.log(data['flavor_text_entries'][entries]);
           pokemon.flavorText = data['flavor_text_entries'][entries]['flavor_text'];
-          console.log(pokemon.number);
+          // console.log(pokemon.number);
           for (poke in Red.pokes) {
-            console.log('checking poke')
+            // console.log('checking poke')
             if (Red.pokes[poke]['number'] == pokemon['number']) {
-              console.log('duplicate pokemon found');
+              // console.log('duplicate pokemon found');
               alert('Pokemon already exists on team');
               return;
             }
-            console.log('still good');
+            // console.log('still good');
           }
           Red.pokes[pokemon['number']] = pokemon;
           setTimeout(drawPokeballs, 500);
@@ -203,13 +203,13 @@ function drawPokeballs() {
 
 function removePokemon() {
   if (document.getElementsByClassName('active')[0].firstElementChild.classList.contains('stillball')) {
-    console.log("Empty pokeball can't be removed");
+    // console.log("Empty pokeball can't be removed");
     return;
   }
   let selectedId = document.getElementsByClassName('active')[0].childNodes[0].id;
-  console.log(selectedId);
+  // console.log(selectedId);
   let removedBall = document.getElementsByClassName('active')[0];
-  console.log(removedBall);
+  // console.log(removedBall);
   Red.remove(selectedId);
   document.getElementById('pokeSelector').removeChild(removedBall);
   drawPokeballs();
