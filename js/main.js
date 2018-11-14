@@ -211,6 +211,10 @@ function removePokemon() {
   Red.remove(selectedId);
   document.getElementById('pokeSelector').removeChild(removedBall);
   drawPokeballs();
+  if (document.getElementsByClassName('active')[0].firstElementChild.classList.contains('stillball')) {
+    document.getElementsByClassName('splash')[0].style.display = "block";
+  }
+  Red['pokes'][document.getElementsByClassName('active')[0].firstElementChild.id].dexEntry();
 }
 
 document.getElementById('addNew').addEventListener('click',function(e) {
@@ -220,7 +224,7 @@ document.getElementById('addNew').addEventListener('click',function(e) {
 });
 
 var Red = new Trainer();
-document.getElementsByClassName('scan')[0].addEventListener('click',drawPokeballs);
+document.getElementsByClassName('remove')[0].addEventListener('click',removePokemon);
 fetchPokemon('vulpix');
 fetchPokemon('smeargle');
 fetchPokemon(135);

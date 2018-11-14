@@ -323,7 +323,7 @@ body {
   height: 200px;
 }
 
-.scan {
+.remove {
   position: absolute;
   bottom: 0px;
   width: 50%;
@@ -335,6 +335,8 @@ body {
   /* border-bottom-left-radius: 200px; */
   color: white;
   font-size: xx-large;
+  border: 3px solid black;
+  overflow: hidden;
 }
 
 .pokeball>img {
@@ -361,7 +363,7 @@ body {
   z-index: 1;
 }
 
-.stillball > i:hover {
+.stillball>i:hover {
   opacity: .7;
   background-color: #8e8e8e;
   position: absolute;
@@ -380,7 +382,7 @@ body {
 .splash p {
   text-align: center;
   font-size: 0.6em;
-  position: absolute;
+  position: sticky;
 }
 
 #author {
@@ -389,10 +391,10 @@ body {
 }
 
 #credits {
-  bottom: 8%;
+  margin: 5% 2%;
 }
 
-.greenscreen img {
+#logo {
   object-fit: cover;
   position: relative;
   display: block;
@@ -401,4 +403,14 @@ body {
   height: auto;
   margin: auto;
   top: 5%;
+}
+
+#trainer {
+  position: sticky;
+  height: 45%;
+  width: auto;
+  display: block;
+  margin: auto;
+  opacity: .8;
+  padding-top: 5%;
 }

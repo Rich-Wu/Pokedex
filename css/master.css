@@ -213,7 +213,7 @@ body {
 .carousel-fixed-item {
   height: 200px; }
 
-.scan {
+.remove {
   position: absolute;
   bottom: 0px;
   width: 50%;
@@ -224,7 +224,9 @@ body {
   height: 15%;
   /* border-bottom-left-radius: 200px; */
   color: white;
-  font-size: xx-large; }
+  font-size: xx-large;
+  border: 3px solid black;
+  overflow: hidden; }
 
 .pokeball > img {
   position: absolute;
@@ -263,16 +265,16 @@ body {
 .splash p {
   text-align: center;
   font-size: 0.6em;
-  position: absolute; }
+  position: sticky; }
 
 #author {
   position: relative;
   top: 5%; }
 
 #credits {
-  bottom: 8%; }
+  margin: 5% 2%; }
 
-.greenscreen img {
+#logo {
   object-fit: cover;
   position: relative;
   display: block;
@@ -281,5 +283,14 @@ body {
   height: auto;
   margin: auto;
   top: 5%; }
+
+#trainer {
+  position: sticky;
+  height: 45%;
+  width: auto;
+  display: block;
+  margin: auto;
+  opacity: .8;
+  padding-top: 5%; }
 
 /*# sourceMappingURL=master.css.map */
