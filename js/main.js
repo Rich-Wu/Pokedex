@@ -69,6 +69,8 @@ class Pokemon {
     // console.log(entry);
     document.getElementsByClassName('splash')[0].style.display = 'none';
     var target = document.getElementById('dexScreen');
+    document.getElementById('sprite').src = this.sprites['front_default'];
+    console.log(this.sprites['front_default']);
     target.innerHTML = entry;
   }
 
@@ -213,6 +215,8 @@ function removePokemon() {
   drawPokeballs();
   if (document.getElementsByClassName('active')[0].firstElementChild.classList.contains('stillball')) {
     document.getElementsByClassName('splash')[0].style.display = "block";
+    document.getElementsByClassName('dexInfo')[0].children[1].innerHTML = "";
+    document.getElementsByClassName('dexInfo')[0].children[0].src = "";
   }
   Red['pokes'][document.getElementsByClassName('active')[0].firstElementChild.id].dexEntry();
 }

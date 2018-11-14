@@ -293,4 +293,16 @@ body {
   opacity: .8;
   padding-top: 5%; }
 
+.dexInfo img {
+  position: absolute;
+  right: 3%;
+  top: 2%;
+  background-color: #00000033;
+  height: 27%; }
+
+#dexScreen {
+  display: inline-block;
+  padding-left: 10px;
+  text-shadow: 1px 1px 0px #7cb17c; }
+
 /*# sourceMappingURL=master.css.map */
