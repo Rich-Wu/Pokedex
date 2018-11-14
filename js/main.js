@@ -90,7 +90,7 @@ class Pokemon {
 
 function addPokemon() {
   var xhttp = new XMLHttpRequest();
-  var userEntry = prompt("Pokemon number").toLowerCase();
+  var userEntry = prompt("Enter in a Pokemon's name or number").toLowerCase();
   xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon/" + userEntry + "/", true);
   xhttp.send();
   xhttp.onreadystatechange = function () {
