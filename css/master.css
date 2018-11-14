@@ -147,6 +147,7 @@ body {
   /* padding-bottom: 1em; */
   border-bottom: 4px solid black;
   border-right: 4px solid black;
+  border-bottom-right-radius: 25px;
   overflow: hidden; }
 
 .pokedex-lens {
