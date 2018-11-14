@@ -33,6 +33,14 @@ class Trainer {
       }
     }
   }
+
+  remove(name) {
+    for (let poke in this.pokes) {
+      if (this.pokes[poke]['species'] == name || this.pokes[poke]['number'] == name) {
+        delete this.pokes[poke];
+      }
+    }
+  }
 }
 
 class Pokemon {
@@ -91,7 +99,10 @@ function addPokemon() {
       var pokemon = new Pokemon(data['id'], data['name'], data['sprites'], data['weight'], data['height'], data['types'], data['stats'][5]['base_stat'], data['stats'][4]['base_stat'], data['stats'][3]['base_stat'], data['stats'][2]['base_stat'], data['stats'][1]['base_stat'], data['stats'][0]['base_stat'], data['abilities']);
       // console.log(pokemon);
       pokemon['flavorText'] = addFlavor(pokemon);
-    }
+    };
+    if (this.readyState == 4 && this.status != 200) {
+      alert('An error occurred while processing your input of ' + userEntry + '. Please try another input.');
+    };
   };
 }
 
@@ -106,7 +117,7 @@ function fetchPokemon(userEntry) {
       var pokemon = new Pokemon(data['id'], data['name'], data['sprites'], data['weight'], data['height'], data['types'], data['stats'][5]['base_stat'], data['stats'][4]['base_stat'], data['stats'][3]['base_stat'], data['stats'][2]['base_stat'], data['stats'][1]['base_stat'], data['stats'][0]['base_stat'], data['abilities']);
       // console.log(pokemon);
       pokemon['flavorText'] = addFlavor(pokemon);
-    }
+    };
   };
 }
 
@@ -123,6 +134,16 @@ function addFlavor(pokemon) {
         if (data['flavor_text_entries'][entries]['language']['name'] == 'en'){
           // console.log(data['flavor_text_entries'][entries]);
           pokemon.flavorText = data['flavor_text_entries'][entries]['flavor_text'];
+          console.log(pokemon.number);
+          for (poke in Red.pokes) {
+            console.log('checking poke')
+            if (Red.pokes[poke]['number'] == pokemon['number']) {
+              console.log('duplicate pokemon found');
+              alert('Pokemon already exists on team');
+              return;
+            }
+            console.log('still good');
+          }
           Red.pokes[pokemon['number']] = pokemon;
           setTimeout(drawPokeballs, 500);
           return;
@@ -178,6 +199,20 @@ function drawPokeballs() {
   var instances = M.Carousel.init(elems, options);
 }
 
+function removePokemon() {
+  if (document.getElementsByClassName('active')[0].firstElementChild.classList.contains('stillball')) {
+    console.log("Empty pokeball can't be removed");
+    return;
+  }
+  let selectedId = document.getElementsByClassName('active')[0].childNodes[0].id;
+  console.log(selectedId);
+  let removedBall = document.getElementsByClassName('active')[0];
+  console.log(removedBall);
+  Red.remove(selectedId);
+  document.getElementById('pokeSelector').removeChild(removedBall);
+  drawPokeballs();
+}
+
 document.getElementById('addNew').addEventListener('click',function(e) {
   if (e.target.parentElement.parentElement.classList.contains('active')) {
     addPokemon();
@@ -186,7 +221,10 @@ document.getElementById('addNew').addEventListener('click',function(e) {
 
 var Red = new Trainer();
 document.getElementsByClassName('scan')[0].addEventListener('click',drawPokeballs);
-fetchPokemon(135);
 fetchPokemon('vulpix');
 fetchPokemon('smeargle');
+fetchPokemon(135);
 setTimeout(drawPokeballs, 1000);
+window.addEventListener('load', function() {
+  document.getElementById('theme').play();
+})
