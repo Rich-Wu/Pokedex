@@ -254,6 +254,7 @@ body {
   top: .5em;
   border: $light-border;
 }
+
 .yellow-light {
   @extend %circle;
   position: relative;
@@ -265,6 +266,7 @@ body {
   top: .5em;
   border: $light-border;
 }
+
 .green-light {
   @extend %circle;
   position: relative;
