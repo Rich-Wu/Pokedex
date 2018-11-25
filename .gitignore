@@ -2,7 +2,7 @@
 **/desktop.ini
 
 # Ignore scraps folder
-scraps/
+scraps/**
 
 # Ignore DSStore
 **/.DS_Store
