@@ -6,3 +6,6 @@ scraps/**
 
 # Ignore DSStore
 **/.DS_Store
+
+# Ignore temp scss file
+temp.scss
