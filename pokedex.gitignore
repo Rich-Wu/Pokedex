@@ -1,5 +1,8 @@
-#ignore windows hidden files
+# Ignore windows hidden files
 **/desktop.ini
 
-#Ignore scraps folder
+# Ignore scraps folder
 scraps/
+
+# Ignore DSStore
+**/.DS_Store
