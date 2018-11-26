@@ -148,7 +148,7 @@ function addFlavor(pokemon) {
             // console.log('still good');
           }
           Red.pokes[pokemon['number']] = pokemon;
-          drawPokeballs();
+          // drawPokeballs();
           return;
         }
       }
@@ -191,8 +191,6 @@ function drawPokeballs() {
       });
     }
   }
-}
-function drawCarousel() {
   var elems = document.querySelectorAll('.carousel');
   let options = {
     'numVisible': 3,
@@ -238,6 +236,5 @@ fetchPokemon(135);
 // setTimeout(drawPokeballs, 1000);
 window.addEventListener('click', function() {
   drawPokeballs();
-  drawCarousel();
   document.getElementById('theme').play();
 }, {'once': true});
