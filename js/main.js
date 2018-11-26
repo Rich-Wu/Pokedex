@@ -101,6 +101,7 @@ function addPokemon() {
       var pokemon = new Pokemon(data['id'], data['name'], data['sprites'], data['weight'], data['height'], data['types'], data['stats'][5]['base_stat'], data['stats'][4]['base_stat'], data['stats'][3]['base_stat'], data['stats'][2]['base_stat'], data['stats'][1]['base_stat'], data['stats'][0]['base_stat'], data['abilities']);
       // console.log(pokemon);
       pokemon['flavorText'] = addFlavor(pokemon);
+      setTimeout(drawCarousel, 400);
     };
     if (this.readyState == 4 && this.status != 200) {
       alert('An error occurred while processing your input of ' + userEntry + '. Please try another input.');
@@ -147,7 +148,7 @@ function addFlavor(pokemon) {
             // console.log('still good');
           }
           Red.pokes[pokemon['number']] = pokemon;
-          setTimeout(drawPokeballs, 500);
+          drawPokeballs();
           return;
         }
       }
@@ -190,6 +191,8 @@ function drawPokeballs() {
       });
     }
   }
+}
+function drawCarousel() {
   var elems = document.querySelectorAll('.carousel');
   let options = {
     'numVisible': 3,
@@ -232,7 +235,9 @@ document.getElementsByClassName('remove')[0].addEventListener('click',removePoke
 fetchPokemon('vulpix');
 fetchPokemon('smeargle');
 fetchPokemon(135);
-setTimeout(drawPokeballs, 1000);
-window.addEventListener('load', function() {
+// setTimeout(drawPokeballs, 1000);
+window.addEventListener('click', function() {
+  drawPokeballs();
+  drawCarousel();
   document.getElementById('theme').play();
-})
+}, {'once': true});
