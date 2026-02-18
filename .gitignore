@@ -9,3 +9,5 @@ scraps/**
 
 # Ignore temp scss file
 temp.scss
+
+.sass-cache
