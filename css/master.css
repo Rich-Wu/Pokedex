@@ -351,4 +351,53 @@ body {
   padding-left: 10px;
   text-shadow: 1px 1px 0px #7cb17c; }
 
+@media screen and (orientation: portrait) {
+  h1 {
+    font-size: 200%;
+    top: 2%;
+    right: 3%; }
+
+  /* Stack columns vertically, each occupying half the viewport */
+  .row.pokedex {
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: nowrap; }
+
+  .row.pokedex > .col {
+    width: 100% !important;
+    margin-left: 0 !important;
+    float: none;
+    box-sizing: border-box;
+    height: 50vh;
+    flex: 0 0 50vh; }
+
+  /* Pokedex body fills its half */
+  .pokedex-body {
+    min-height: unset;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden; }
+
+  /* Pin the screen below the lights strip, stretch to bottom */
+  .screen-wrapper {
+    position: absolute;
+    top: 115px;
+    bottom: 8px;
+    left: 7%;
+    right: 7%;
+    width: auto;
+    min-height: unset;
+    height: auto;
+    margin: 0;
+    display: block;
+    box-sizing: border-box; }
+
+  /* Carousel fills its half */
+  .carousel {
+    height: 100%; }
+
+  /* Hide the logo in portrait mode */
+  #title {
+    display: none; } }
+
 /*# sourceMappingURL=master.css.map */
