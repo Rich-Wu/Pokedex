@@ -1,5 +1,3 @@
-console.log("linked");
-
 function threeDigits(num) {
     return String(num).padStart(3, "0");
 }
@@ -84,11 +82,9 @@ class Pokemon {
 
     dexEntry() {
         var entry = `No. ${this["number"]}<br>${capitalize(this["species"])}<br>HT: ${Number(0.1 * this["height"]).toFixed(1)}m<br>WT: ${Number(this["weight"] * 0.1).toFixed(1)}kg<br><br>HP: ${this["hp"]} SPD: ${this["speed"]}<br>ATK: ${this["atk"]} Sp.ATK: ${this["spatk"]}<br>DEF: ${this["def"]} Sp.DEF: ${this["spdef"]}<br><br>Abilities: ${this.getAbilities()}<br><br>${this["flavorText"]}`;
-        // console.log(entry);
         document.getElementsByClassName("splash")[0].style.display = "none";
         var target = document.getElementById("dexScreen");
         document.getElementById("sprite").src = this.sprites["front_default"];
-        // console.log(this.sprites['front_default']);
         target.innerHTML = entry;
     }
 
@@ -105,7 +101,6 @@ class Pokemon {
 
     playCry() {
         document.getElementById(this.number + "cry").play();
-        // console.log('played ' + this.number + ", " + this.species);
     }
 }
 
@@ -122,7 +117,6 @@ function addPokemon() {
         if (this.readyState == 4 && this.status == 200) {
             // what result you want to achieve
             let data = JSON.parse(this.responseText);
-            // console.log(data);
             var pokemon = new Pokemon(
                 data["id"],
                 data["name"],
@@ -138,7 +132,6 @@ function addPokemon() {
                 data["stats"][0]["base_stat"],
                 data["abilities"],
             );
-            // console.log(pokemon);
             pokemon["flavorText"] = addFlavor(pokemon);
             setTimeout(drawPokeballs, 500);
         }
@@ -163,7 +156,6 @@ function fetchPokemon(userEntry) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let data = JSON.parse(this.responseText);
-            // console.log(data);
             var pokemon = new Pokemon(
                 data["id"],
                 data["name"],
@@ -179,7 +171,6 @@ function fetchPokemon(userEntry) {
                 data["stats"][0]["base_stat"],
                 data["abilities"],
             );
-            // console.log(pokemon);
             pokemon["flavorText"] = addFlavor(pokemon);
         }
     };
@@ -196,25 +187,18 @@ function addFlavor(pokemon) {
     xhttp2.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             data = JSON.parse(this.responseText);
-            // console.log(data['flavor_text_entries'][2]['flavor_text']);
-            // console.log(data);
             for (entries in data["flavor_text_entries"]) {
                 if (
                     data["flavor_text_entries"][entries]["language"]["name"] ==
                     "en"
                 ) {
-                    // console.log(data['flavor_text_entries'][entries]);
                     pokemon.flavorText =
                         data["flavor_text_entries"][entries]["flavor_text"];
-                    // console.log(pokemon.number);
                     for (poke in Red.pokes) {
-                        // console.log('checking poke')
                         if (Red.pokes[poke]["number"] == pokemon["number"]) {
-                            // console.log('duplicate pokemon found');
                             alert("Pokemon already exists on team");
                             return;
                         }
-                        // console.log('still good');
                     }
                     Red.pokes[pokemon["number"]] = pokemon;
                     return;
@@ -285,14 +269,11 @@ function removePokemon() {
             .getElementsByClassName("active")[0]
             .firstElementChild.classList.contains("stillball")
     ) {
-        // console.log("Empty pokeball can't be removed");
         return;
     }
     let selectedId =
         document.getElementsByClassName("active")[0].childNodes[0].id;
-    // console.log(selectedId);
     let removedBall = document.getElementsByClassName("active")[0];
-    // console.log(removedBall);
     Red.remove(selectedId);
     document.getElementById("pokeSelector").removeChild(removedBall);
     drawPokeballs();
