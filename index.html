@@ -1,67 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
-  <meta charset="utf-8">
-  <title>Red's Pokedex</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
-  <link rel="stylesheet" href="css/Animate.css">
-  <link rel="stylesheet" href="css/master.css">
-  <link rel="stylesheet" href="css/pokemon-font.css">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Red's Pokedex</title>
 </head>
-
 <body>
-  <h1 id="title">Red's Pokedex</h1>
-  <div class="row pokedex valign-wrapper">
-    <div class="col s12 m6 l4">
-      <div class="pokedex-body">
-        <div class="lights">
-          <div class="pokedex-lens">
-            <div class="lens-glare"></div>
-          </div>
-          <div class="lights-flex">
-            <div class="red-light"></div>
-            <div class="yellow-light"></div>
-            <div class="green-light"></div>
-          </div>
-        </div>
-        <div class="screen-wrapper">
-          <div class="screen-wrapper-notch"></div>
-          <div class="greenscreen">
-            <div class="splash">
-              <img id="logo" class="animated fadeInDown" src="img/pokelogo.png">
-              <p id="author">Pokedex written by Richard Wu</p>
-              <img class="animated flipInY" id="trainer" src="img/trainer.png">
-              <p id="prompt">Click anywhere to initialize Pokemon</p>
-              <p id="credits">Utilizes Materializecss, PokeAPI, Animate.css, Pokemon-font by Superpencil, Pokemon images
-                from pokemon.com, and Pokemon cries from veekun.com</p>
-            </div>
-            <div class="dexInfo">
-              <img id="sprite">
-              <p id="dexScreen"></p>
-            </div>
-          </div>
-          <button class="red remove">REMOVE</button>
-        </div>
-      </div>
-    </div>
-    <div class="col s12 m6 l6">
-      <div class="carousel" id="pokeSelector">
-        <div class="carousel-item valign-wrapper">
-          <div class="stillball" id="addNew"><i class="material-icons">add</i></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <audio id="theme" src="opening.ogg" loop>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/materialize.js"></script>
-    <script src="js/main.js"></script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
-
 </html>

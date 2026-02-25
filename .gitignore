@@ -11,3 +11,7 @@ scraps/**
 temp.scss
 
 .sass-cache
+
+node_modules
+
+**/*.css
