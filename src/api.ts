@@ -1,3 +1,4 @@
+import { Pokemon } from "@/types";
 import { threeDigits } from "./utils";
 
 export async function fetchPokemon(query: string | number) {
@@ -31,7 +32,7 @@ export async function fetchFlavor(id: number) {
     if (!res.ok) throw new Error(`Species not found: ${id}`);
     const data = await res.json();
     const entry = data.flavor_text_entries.find(
-        (e) => e.language.name === "en",
+        (e: any) => e.language.name === "en",
     );
     return entry ? entry.flavor_text : "No info found";
 }

@@ -1,13 +1,19 @@
-import { useEffect, useRef } from "react";
+import { JSX, ReactHTMLElement, useEffect, useRef } from "react";
 import { capitalize } from "../utils";
-import { Pokemon } from "@/types";
+import { Abilities, PokeAbility, Pokemon } from "@/types";
 
-function getAbilities(abilities) {
-    return abilities.map((a) => capitalize(a.ability.name)).join(", ");
+function getAbilities(abilities: Abilities) {
+    return abilities
+        .map((a: PokeAbility) => capitalize(a.ability.name))
+        .join(", ");
 }
 
-export default function DexEntry({ pokemon: Pokemon }) {
-    const cryRef = useRef(null);
+export default function DexEntry({
+    pokemon,
+}: {
+    pokemon: Pokemon;
+}): JSX.Element {
+    const cryRef = useRef<HTMLAudioElement>(null);
 
     useEffect(() => {
         if (cryRef.current) {
@@ -27,7 +33,8 @@ export default function DexEntry({ pokemon: Pokemon }) {
                 <br />
                 {capitalize(pokemon.species)}
                 <br />
-                HT: {(pokemon.height * 0.1).toFixed(1)}m<br />
+                HT: {(pokemon.height * 0.1).toFixed(1)}m
+                <br />
                 WT: {(pokemon.weight * 0.1).toFixed(1)}kg
                 <br />
                 <br />

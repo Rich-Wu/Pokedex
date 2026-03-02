@@ -3,6 +3,7 @@ import { fetchPokemon } from "./api";
 import PokedexDevice from "./components/PokedexDevice";
 import PokeballCarousel from "./components/PokeballCarousel";
 import { Pokemon } from "@/types";
+import "./styles/scss/master.scss";
 
 export default function App() {
     const [team, setTeam] = useState<Array<Pokemon>>([]);
@@ -65,7 +66,7 @@ export default function App() {
                 team={team}
                 activePokemon={activePokemon}
                 onSelect={setActivePokemon}
-                onAdd={addPokemon}
+                addPokemon={addPokemon}
             />
         </div>
     );

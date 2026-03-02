@@ -15,3 +15,5 @@ temp.scss
 node_modules
 
 **/*.css
+
+dist

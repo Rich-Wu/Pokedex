@@ -1,26 +1,41 @@
-import { useRef, useEffect, useState } from "react";
+import {
+    useRef,
+    useEffect,
+    useState,
+    MouseEventHandler,
+    Dispatch,
+    SetStateAction,
+} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperType } from "swiper";
 import "swiper/css";
+import { Pokemon } from "@/types";
+import { AddPokeball, FullPokeball, Pokeball } from "./Pokeball";
 
 export default function PokeballCarousel({
     team,
     activePokemon,
     onSelect,
-    onAdd,
+    addPokemon,
+}: {
+    team: Array<Pokemon>;
+    activePokemon: Pokemon | null;
+    onSelect: Dispatch<SetStateAction<Pokemon | null>>;
+    addPokemon: Function;
 }) {
-    const swiperRef = useRef(null);
+    const swiperRef = useRef<SwiperType | null>(null);
     const isProgrammatic = useRef(false);
     const [centerIndex, setCenterIndex] = useState(0);
 
     // Sync Swiper position whenever activePokemon or team changes
     useEffect(() => {
         const swiper = swiperRef.current;
-        if (!swiper?.initialized) return;
+        if (!swiper) return;
 
         swiper.update();
 
         const targetIdx = activePokemon
-            ? team.findIndex((p) => p.number === activePokemon.number)
+            ? team.findIndex((p: Pokemon) => p.number === activePokemon.number)
             : team.length;
 
         if (targetIdx === -1 || targetIdx === swiper.activeIndex) return;
@@ -30,7 +45,7 @@ export default function PokeballCarousel({
         setCenterIndex(targetIdx);
     }, [activePokemon, team]);
 
-    function handleSlideChange(swiper) {
+    function handleSlideChange(swiper: SwiperType) {
         const idx = swiper.activeIndex;
         setCenterIndex(idx);
         if (isProgrammatic.current) {
@@ -50,21 +65,14 @@ export default function PokeballCarousel({
                 }}
                 onSlideChange={handleSlideChange}
             >
-                {team.map((pokemon) => (
+                {team.map((pokemon: Pokemon) => (
                     <SwiperSlide key={pokemon.number}>
-                        <div className="carousel-item valign-wrapper">
-                            <div className="pokeball">
-                                <img
-                                    src={pokemon.picture}
-                                    alt={pokemon.species}
-                                />
-                            </div>
-                        </div>
+                        <FullPokeball pokemon={pokemon} />
                     </SwiperSlide>
                 ))}
                 <SwiperSlide>
                     <div className="carousel-item valign-wrapper">
-                        <Pokeball onAdd={onAdd} onSelect={onSelect} />
+                        <AddPokeball addPokemon={addPokemon} />
                     </div>
                 </SwiperSlide>
             </Swiper>

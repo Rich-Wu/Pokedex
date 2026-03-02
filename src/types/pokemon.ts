@@ -1,7 +1,7 @@
 export interface Pokemon {
     number: number;
     species: string;
-    sprites: string;
+    sprites: { front_default: string };
     picture: string;
     weight: number;
     height: number;
@@ -12,8 +12,14 @@ export interface Pokemon {
     spatk: number;
     spdef: number;
     speed: number;
-    abilities: string;
+    abilities: Abilities;
     flavorText: string;
     cry: string;
     caught: boolean;
+}
+
+export type Abilities = Array<PokeAbility>;
+
+export interface PokeAbility {
+    ability: { name: string };
 }
