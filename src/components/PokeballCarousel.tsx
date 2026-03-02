@@ -1,16 +1,9 @@
-import {
-    useRef,
-    useEffect,
-    useState,
-    MouseEventHandler,
-    Dispatch,
-    SetStateAction,
-} from "react";
+import { useRef, useEffect, useState, Dispatch, SetStateAction } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import { Pokemon } from "@/types";
-import { AddPokeball, FullPokeball, Pokeball } from "./Pokeball";
+import { AddPokeball, FullPokeball } from "./Pokeball";
 
 export default function PokeballCarousel({
     team,
@@ -27,7 +20,6 @@ export default function PokeballCarousel({
     const isProgrammatic = useRef(false);
     const [centerIndex, setCenterIndex] = useState(0);
 
-    // Sync Swiper position whenever activePokemon or team changes
     useEffect(() => {
         const swiper = swiperRef.current;
         if (!swiper) return;
@@ -67,7 +59,7 @@ export default function PokeballCarousel({
             >
                 {team.map((pokemon: Pokemon) => (
                     <SwiperSlide key={pokemon.number}>
-                        <FullPokeball pokemon={pokemon} />
+                        <FullPokeball onSelect={onSelect} pokemon={pokemon} />
                     </SwiperSlide>
                 ))}
                 <SwiperSlide>

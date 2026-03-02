@@ -1,35 +1,38 @@
 import { Pokemon } from "@/types";
-import { Dispatch, MouseEventHandler, ReactNode, SetStateAction } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 
 export function AddPokeball({ addPokemon }: { addPokemon: Function }) {
     return (
-        <div className="stillball" id="addNew" onClick={() => addPokemon()}>
-            <i className="material-icons">add</i>
-        </div>
-    );
-}
-
-export function FullPokeball({ pokemon, ...rest }: Record<string, any>) {
-    return (
-        <Pokeball {...(rest as PokeballProps)}>
-            {pokemon && <img src={pokemon.picture} alt={pokemon.species} />}
+        <Pokeball>
+            <div className="stillball" id="addNew" onClick={() => addPokemon()}>
+                <i className="material-icons">add</i>
+            </div>
         </Pokeball>
     );
 }
 
-type PokeballProps = {
-    children: ReactNode;
-    pokemon: Pokemon | null;
+export function FullPokeball({
+    pokemon,
+    onSelect,
+}: {
+    pokemon: Pokemon;
     onSelect: Dispatch<SetStateAction<Pokemon | null>>;
-};
+}) {
+    return (
+        <Pokeball>
+            <img
+                src={pokemon.picture}
+                alt={pokemon.species}
+                onClick={() => onSelect(pokemon)}
+            />
+        </Pokeball>
+    );
+}
 
-export function Pokeball({ children, pokemon, onSelect }: PokeballProps) {
+function Pokeball({ children }: { children: ReactNode }) {
     return (
         <div className="carousel-item valign-wrapper">
-            <div className="pokeball stillball">
-                {children}
-                {pokemon && <img src={pokemon.picture} alt={pokemon.species} />}
-            </div>
+            <div className="pokeball stillball">{children}</div>
         </div>
     );
 }
